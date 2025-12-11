@@ -33,14 +33,26 @@ h1 {
     border: 5px solid #ffcc00;
     border-radius: 10px;
     overflow: hidden; 
-    height: 350px; /* Fixed height for consistent look */
+    height: 350px; 
+    
+    /* === NEW FLEX PROPERTIES TO CENTER CONTENT === */
+    display: flex;             /* 1. Enable Flexbox */
+    justify-content: center;   /* 2. Center content horizontally */
+    align-items: center;       /* 3. Center content vertically */
+    /* =========================================== */
 }
 
 .nicku-slide {
     width: 100%;
     height: 100%;
     object-fit: cover; 
+    
+    /* Keep position: absolute and fix alignment using this method: */
     position: absolute; 
+    top: 50%;                 /* Move the top edge to the middle */
+    left: 50%;                /* Move the left edge to the middle */
+    transform: translate(-50%, -50%); /* Pull the image back by half its width/height */
+    
     opacity: 0; 
     transition: opacity 1.5s ease-in-out; 
 }
