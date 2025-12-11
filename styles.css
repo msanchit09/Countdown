@@ -50,38 +50,56 @@ h1 {
 }
 
 /* --- SCROLL BOX STYLES --- */
+/* ... (Keep all existing styles for body, countdown-container, h1, slideshow, and timer) ... */
+
+/* --- SCROLL BOX STYLES (REVISED) --- */
 .scrolling-text-container {
-    border: 4px dashed #ff6600; /* Orange/Urgent border */
+    border: 4px dashed #ff6600; 
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 30px;
     background-color: #333; 
-    display: flex;
+    
+    display: flex; /* Flex is used to center the countdown */
     flex-direction: column;
     align-items: center; 
     justify-content: center; 
-    overflow: hidden; 
+    
+    overflow: hidden; /* CRITICAL: Hides the text track overflow */
     position: relative;
     min-height: 180px; 
 }
 
-.scrolling-text {
-    white-space: nowrap; 
-    overflow: hidden;
-    font-size: 1.2em;
-    padding: 10px 0;
-    color: #ffd700; /* Gold text */
-    font-weight: bold;
-    width: 100%;
-    position: absolute; 
-    top: 0; 
-    left: 100%; 
-    animation: scrollText 20s linear infinite; 
+/* NEW: The track holds the duplicated text */
+.scrolling-text-track {
+    display: flex; /* CRITICAL: Flex makes items flow horizontally */
+    white-space: nowrap; /* CRITICAL: Prevents text from wrapping */
+    position: absolute;
+    top: 5px; /* Position the scroll message at the top */
+    left: 0;
+    
+    /* Apply the new, reliable animation */
+    animation: scrollTrack 25s linear infinite; 
 }
 
-@keyframes scrollText {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-100%); }
+/* NEW: Style for each copy of the text */
+.scrolling-text-item {
+    padding: 0 50px; /* Space between the duplicated messages */
+    margin: 0;
+    font-size: 1.2em;
+    color: #ffd700; 
+    font-weight: bold;
+    /* width: auto; Let the width be determined by the content */
+}
+
+/* NEW KEYFRAMES: Moves the track exactly the width of one message (50%) */
+@keyframes scrollTrack {
+    0% {
+        transform: translateX(0%); /* Start at the beginning */
+    }
+    100% {
+        transform: translateX(-50%); /* Move 50% of the total track width */
+    }
 }
 
 /* Timer styles for centering within the scroll box */
