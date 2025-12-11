@@ -81,7 +81,7 @@ h1 {
 
 @keyframes scrollText {
     0%   { transform: translateX(0); }
-    100% { transform: translateX(-200%); }
+    100% { transform: translateX(-100%); }
 }
 
 /* Timer styles for centering within the scroll box */
